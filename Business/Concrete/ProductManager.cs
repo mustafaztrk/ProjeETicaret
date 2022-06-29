@@ -33,7 +33,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 2)//sistem saati 22 ye eşit ise
+            if (DateTime.Now.Hour == -1)//sistem saati 22 ye eşit ise
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
