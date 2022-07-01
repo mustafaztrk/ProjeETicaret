@@ -35,8 +35,9 @@ namespace WebAPI
           
             //IoC yapýsý
             // Singleton tüm bellekte bir tane oluþtur bütün isteyer her yere onu ver 
-            services.AddSingleton<IProductService,ProductManager>();//IProductService istenirse  ProductManager ver 
-            services.AddSingleton<IProductDal, EfProductDal>();
+            //bussiness icerisine taþýdýk
+            //services.AddSingleton<IProductService,ProductManager>();//IProductService istenirse  ProductManager ver 
+            //services.AddSingleton<IProductDal, EfProductDal>();
 
 
 
