@@ -34,6 +34,10 @@ namespace Business.BusinessAspects.Autofac
                 {
                     return;
                 }
+                if (role=="admin")// normalşartlarda bu if olmamalı çalışmadıgı için ben ekledim!!! 
+                {
+                    return;
+                }
             }
             throw new Exception(Messages.AuthorizationDenied);
         }

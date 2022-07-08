@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -25,6 +26,8 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()//IActionResult sayesinde statu  kodlarımızı da döndüre biliyoruz, örn data message ve state de döndürcez
         {
+            Thread.Sleep(1000);
+
             var result = _productService.GetAll();
             if (result.Success)
             {
@@ -38,6 +41,17 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _productService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycategory")]// iki tane get oparasyonumuz oldugu için client hangisini çalıştırcagını bilemez bundan dolayı isim veriyoruz, yada  [HttpGet(id)] alıcam gibi belirleye biliiz
+        public IActionResult GetByCategory(int categoryId)
+        {
+            var result = _productService.GetAllByCategoryId(categoryId);
             if (result.Success)
             {
                 return Ok(result);
